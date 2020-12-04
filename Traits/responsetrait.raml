@@ -1,0 +1,19 @@
+#%RAML 1.0 Trait
+responses:
+ 400:
+  description: not found 
+  body:
+    application/json:
+      example:
+        {
+          "Message": "Not found"
+        }
+ 500:
+  description: Server failed
+  body:
+    application/json:
+      example:
+        {
+          "Message" : " Server failed"
+        }
+    

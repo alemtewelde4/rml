@@ -1,0 +1,64 @@
+#%RAML 1.0
+title: craft online shopping
+types:
+  userdata: !include Types/userdataType.raml
+traits:
+  respo: !include Traits/responsetrait.raml
+documentation:
+  - !include documentation.raml
+resourceTypes:
+  myresource: !include resourceType/get.raml
+securitySchemes:
+  security: !include securityScheme.raml
+/user:
+  get:
+    description: get user from list of users
+    responses:
+      200:
+        body:
+          application/json:
+            type:  userdata
+            example:
+              !include Examples/userexample.raml
+    is:
+      - respo
+  post:
+    description: 
+    body:
+      application/json:
+        example:
+          
+  /{ID}:
+    get:
+      description: get  one user from all the users using ID
+      responses:
+        200:
+          body:
+            application/json:
+              type: userdata
+              example:
+                !include Examples/userexample.raml
+      is:
+        - respo
+    post:
+      description: create user 
+      body:
+        application/json:
+          example:
+            {
+               "username": "alem",
+                "email": "alem@example.com"
+            }
+      responses:
+        200:
+          description: account created
+          body:
+            application/json:
+              example:
+                {
+                  "user-ID": 123
+                }
+      is:
+        - respo
+
+      
